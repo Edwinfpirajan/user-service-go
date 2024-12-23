@@ -11,6 +11,7 @@ type GormDB struct {
 	*gorm.DB
 }
 
+// Instancia de la base de datos
 func NewGormDB(host string, port int, user, password, dbName string) (*GormDB, error) {
 	dsn := fmt.Sprintf(
 		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable TimeZone=America/Bogota",

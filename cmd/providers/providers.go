@@ -14,14 +14,13 @@ type AppContainer struct {
 	Server *server.Server
 }
 
+// Inicializador de contenedor de dependencias
 func Initialize() (*AppContainer, error) {
-	// 1. Cargar configuración
 	cfg, err := config.NewConfig()
 	if err != nil {
 		return nil, err
 	}
 
-	// 2. Inicializar base de datos
 	db, err := database.NewGormDB(cfg.DB.Host, cfg.DB.Port, cfg.DB.Username, cfg.DB.Password, cfg.DB.DBName)
 	if err != nil {
 		return nil, err
@@ -29,7 +28,6 @@ func Initialize() (*AppContainer, error) {
 
 	log.Println("Dependencias inicializadas correctamente")
 
-	// Devolver el contenedor con todas las dependencias
 	return &AppContainer{
 		Config: cfg,
 		DB:     db,

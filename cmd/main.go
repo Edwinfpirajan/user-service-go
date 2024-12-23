@@ -15,5 +15,4 @@ func main() {
 
 	// Iniciar el servidor
 	container.Server.Start(container.Config.App.Port)
-
 }

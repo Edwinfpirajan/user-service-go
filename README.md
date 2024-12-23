@@ -16,4 +16,3 @@
 ## 📁 Estructura del Proyecto
 
 El proyecto sigue una estructura modular y limpia, basada en la arquitectura hexagonal:
-
