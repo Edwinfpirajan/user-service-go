@@ -9,7 +9,7 @@ RUN go mod tidy
 RUN go build -o user-service ./cmd/main.go
 
 # Etapa de producción con Debian reciente
-FROM debian:bookworm-slim  # Imagen base con GLIBC >= 2.34
+FROM debian:bookworm-slim
 
 WORKDIR /app
 
