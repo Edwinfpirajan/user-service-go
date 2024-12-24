@@ -16,8 +16,8 @@ func NewUserRepository(db *database.GormDB) *UserRepository {
 }
 
 // Obtiene todos los usuarios
-func (r *UserRepository) GetAll() ([]domain.User, error) {
-	var users []domain.User
+func (r *UserRepository) GetAll() (domain.Users, error) {
+	var users domain.Users
 	if err := r.db.Find(&users).Error; err != nil {
 		return nil, err
 	}
