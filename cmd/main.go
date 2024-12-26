@@ -13,6 +13,5 @@ func main() {
 		log.Fatalf("Error al inicializar dependencias: %v", err)
 	}
 
-	// Iniciar el servidor
 	container.Server.Start(container.Config.App.Port)
 }

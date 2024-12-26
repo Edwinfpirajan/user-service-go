@@ -10,7 +10,7 @@ import (
 
 type AppContainer struct {
 	Config *config.Config
-	DB     *database.GormDB
+	DB     *database.DBConnection
 	Server *server.Server
 }
 
@@ -21,9 +21,9 @@ func Initialize() (*AppContainer, error) {
 		return nil, err
 	}
 
-	db, err := database.NewGormDB(cfg.DB.Host, cfg.DB.Port, cfg.DB.Username, cfg.DB.Password, cfg.DB.DBName)
+	db, err := database.NewGormDB(cfg)
 	if err != nil {
-		return nil, err
+		log.Fatalf("Error al inicializar la base de datos: %v", err)
 	}
 
 	log.Println("Dependencias inicializadas correctamente")

@@ -5,25 +5,26 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
+	"github.com/Edwinfpirajan/user-service-go/config"
 )
 
-type GormDB struct {
+type DBConnection struct {
 	*gorm.DB
 }
 
 // Instancia de la base de datos
-func NewGormDB(host string, port int, user, password, dbName string) (*GormDB, error) {
+func NewGormDB(cfg *config.Config) (*DBConnection, error) {
 	dsn := fmt.Sprintf(
 		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable TimeZone=America/Bogota",
-		host, port, user, password, dbName,
+		cfg.DB.Host, cfg.DB.Port, cfg.DB.Username, cfg.DB.Password, cfg.DB.DBName,
 	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return nil, fmt.Errorf("error al conectar a la base de datos: %w", err)
+		return nil, fmt.Errorf("error al conectar con la base de datos: %w", err)
 	}
 
 	fmt.Println("Conexión a la base de datos exitosa")
-
-	return &GormDB{db}, nil
+	return &DBConnection{db}, nil
 }

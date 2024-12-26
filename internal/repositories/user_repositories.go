@@ -7,11 +7,11 @@ import (
 
 // UserRepository repositorio de usuarios
 type UserRepository struct {
-	db *database.GormDB
+	db *database.DBConnection
 }
 
 // NewUserRepository crea una instancia del repositorio de usuarios
-func NewUserRepository(db *database.GormDB) *UserRepository {
+func NewUserRepository(db *database.DBConnection) *UserRepository {
 	return &UserRepository{db}
 }
 
